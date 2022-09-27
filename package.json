@@ -1,0 +1,11 @@
+{
+  "name": "clean-pokedex",
+  "version": "1.0.0",
+  "description": "clean pokédex usando boas práticas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mateus florêncio",
+  "license": "GNU GPL3"
+}
