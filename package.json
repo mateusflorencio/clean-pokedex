@@ -1,5 +1,5 @@
 {
-  "name": "clean-pokedex",
+  "name": "clean-pokedex-react",
   "version": "1.0.0",
   "description": "clean pokédex usando boas práticas",
   "main": "index.js",
