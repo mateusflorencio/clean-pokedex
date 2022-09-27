@@ -16,23 +16,23 @@ module.exports = {
     alias: { '@': path.join(__dirname, 'src')}
   },
   module: {
-    rules:[{
+    rules: [{
       test: /\.ts(x?)$/,
       loader: 'ts-loader',
       exclude: /node_modules/
-    },{
+    }, {
       test: /\.scss$/,
-      use:[{
+      use: [{
         loader: 'style-loader'
-      },{
+      }, {
         loader: 'css-loader',
         options: {
-          module: true
+          modules: true
         }
-      },{
+      }, {
         loader: 'sass-loader'
       }]
-  }]
+    }]
   },
   devtool: 'inline-source-map',
   devServer: {
@@ -48,7 +48,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new DefinePlugin({
-      'process.env.API_URL': JSON.stringify('http://fordevs.herokuapp.com/api')
+      'process.env.API_URL': JSON.stringify('https://pokeapi.co/api/v2')
     }),
     new HtmlWebpackPlugin({
       template: './template.dev.html'

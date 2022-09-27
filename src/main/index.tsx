@@ -1,8 +1,7 @@
-import InitalPage from '@/presentation/pages/inital-page/initial-page'
+import { InitalPage } from '@/presentation/pages'
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot }  from 'react-dom/client'
 
-ReactDOM.render(
-  <h1>oi</h1>,
-  document.getElementById('main')
-)
+const container = document.getElementById('main')
+const root = createRoot(container!)
+root.render(<InitalPage />)
