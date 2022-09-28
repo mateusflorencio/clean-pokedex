@@ -1,1 +1,119 @@
+@use "../../styles/snippets" as s;
+@use "../../styles/mixin" as m;
 @import "../../styles/colors.scss";
+@import "../../styles/colors-category-pokemon.scss";
+
+$colors: (
+  "blue": $blue,
+  "green": $green,
+  "fire": $fire,
+);
+
+@include m.generateClassBgWithHover($colors, "darken", 10%);
+@include m.generateClassBgWithGradient($colors, left, 30%);
+
+.pokePageBox {
+  @include s.box;
+  flex-direction: column;
+  height: calc(100vh - 80px);
+
+  .btnBox {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .btn {
+      height: 3.3rem;
+      width: 12.4rem;
+      font-weight: 900;
+      font-size: 1.4rem;
+      color: $white;
+      @include s.allCenter;
+      @include s.borderRadius(0.9rem);
+      margin-bottom: 2.5rem;
+      margin-top: 2.5rem;
+      cursor: pointer;
+    }
+  }
+
+  .contentBox {
+    @include s.box;
+    background-color: $white;
+    padding-bottom: 8rem;
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+
+    .outYellow {
+      position: absolute;
+      background: $primary;
+      width: 40rem;
+      height: 55rem;
+      left: -40rem;
+      z-index: 1;
+    }
+
+    .bgImgBox {
+      width: 26rem;
+      height: 40rem;
+      @include s.borderRadius(1rem);
+      margin-top: 6rem;
+      margin-left: 3.4rem;
+      position: relative;
+
+      .outWhite {
+        position: absolute;
+        background: $white;
+        width: 3.4rem;
+        height: 115%;
+        left: -3.4rem;
+        z-index: 1;
+      }
+
+      img {
+        position: absolute;
+        bottom: -6rem;
+        right: -5rem;
+        max-height: 33rem;
+        height: 100%;
+      }
+    }
+
+    .descriptionBox {
+      margin-top: 6rem;
+      font-size: 1.4rem;
+
+      h2 {
+        margin-top: 2rem;
+      }
+
+      p {
+        margin-top: 1rem;
+      }
+    }
+
+    .pictureBox {
+      margin-top: 6rem;
+      width: 14rem;
+
+      .picture {
+        width: 7.9rem;
+        height: 7.9rem;
+        border: 1px solid $greyLigth;
+        @include s.borderRadius(0.9rem);
+        @include s.allCenter;
+        margin-bottom: 2rem;
+        cursor: pointer;
+         
+        &:hover{
+          box-shadow:1px 1px 40px 1px rgb(144, 144, 144);
+        }
+
+        img{
+          max-width: 90%;
+          max-height: 90%;
+        }
+      }
+    }
+  }
+}

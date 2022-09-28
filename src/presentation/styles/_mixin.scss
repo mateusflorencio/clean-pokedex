@@ -1,0 +1,38 @@
+@mixin defineBgColorWithHover($color, $mode, $percente) {
+  background-color: $color;
+  @if $mode == "darken" {
+    &:hover {
+      background-color: darken($color, $percente);
+    }
+  } @else if $mode == "lighten" {
+    &:hover {
+      background-color: lighten($color, $percente);
+    }
+  } @else {
+    &:hover {
+      background-color: $color
+    }
+  }
+}
+
+@mixin generateClassBgWithHover($arrayColor, $mode, $percente) {
+  @each $name, $cor in $arrayColor {
+    .bg-#{$name} {
+      @include defineBgColorWithHover($cor, $mode, $percente);
+    }
+  }
+}
+
+//gradient
+@mixin defineBgColorWithGradient($cor, $direction, $percente) {
+  background: linear-gradient(to $direction, $cor 0%,darken($cor, $percente) 100%)
+  
+}
+
+@mixin generateClassBgWithGradient($arrayColor, $direction, $percente) {
+  @each $name, $cor in $arrayColor {
+    .bg-#{$name}-gradient-to-#{$direction} {
+      @include defineBgColorWithGradient($cor, $direction, $percente);
+    }
+  }
+}

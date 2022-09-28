@@ -8,7 +8,7 @@
 }
 
 @mixin gradientColor($color) {
-  background: linear-gradient(to bottom, rgb(91, 91, 91) 0%,$color 30%, $color 100%);
+  background: linear-gradient(to bottom, $color 0%,darken($color, 25%) 100%);
 }
 
 .cardBox {

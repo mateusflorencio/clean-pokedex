@@ -2,7 +2,7 @@
 
 * {
   font-family: 'Roboto', sans-serif;
-  font-size: 14px;
+  font-size: 0.625rem;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -11,6 +11,18 @@
 body {
   background-color: $primary;
   min-height: 100vh;
+}
+
+h1{
+  font-size: 2.4rem;
+}
+
+h2{
+  font-size: 1.8rem;
+}
+
+p{
+  font-size: 1.4rem;
 }
 
 $colors: "fire", "water", "bug";
