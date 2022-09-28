@@ -6,11 +6,14 @@ type Props = {
   name: string
   title: string
   description: string
+  type: string
 }
 
-export const Card: React.FC<Props> = ({ img, description, name, title }: Props) => (
+export const CardPokemon: React.FC<Props> = ({ img, description, name, title, type }: Props) => (
   <div className={Styles.cardBox}>
-  <div className={Styles.imgBox}><img src={img } alt="" /></div>
+  <div className={Styles.imgBox}>
+    <div className={Styles[`bg-${type}`]}></div>
+    <img src={img } alt="" /></div>
   <div className={Styles.descriptionBox}>
     <h2>{ name }</h2>
     <h3>{ title }</h3>

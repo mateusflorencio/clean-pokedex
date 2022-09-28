@@ -11,3 +11,15 @@
 body {
   background-color: $primary;
 }
+
+$colors: "fire", "water", "bug";
+
+$fire: #ffa152;
+$water: #61aede;
+$bug: #97c32e;
+
+@each $col in $colors {
+  .bg-#{$col} {
+    background-color: #{"$"$col};
+  }
+}

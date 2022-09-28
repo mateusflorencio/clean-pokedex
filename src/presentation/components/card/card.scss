@@ -1,5 +1,11 @@
 @use "../../styles/snippets" as s;
 @import "../../styles/colors.scss";
+@import "../../styles/colors-category-pokemon.scss";
+
+@mixin allAreaAbsolutWithRadiusBordetTop {
+  @include s.allAreaAbsolute();
+  border-radius: 8px 8px 0 0;
+}
 
 .cardBox{
   width:200px ;
@@ -10,14 +16,30 @@
 
   .imgBox{
     @include s.allCenter;
-    background-color: $blue;
     border-radius: 8px 8px 0 0;
     height: 180px;
     width: 100%;
+    position: relative;
 
     img{
       max-width: 80%;
       max-height: 80%;
+      z-index: 1;
+    }
+
+    .bg-fire{
+      background-color: $fire;
+      @include allAreaAbsolutWithRadiusBordetTop;
+    }
+
+    .bg-water{
+      background-color: $water;
+      @include allAreaAbsolutWithRadiusBordetTop;
+    }
+
+    .bg-bug{
+      background-color: $bug;
+      @include allAreaAbsolutWithRadiusBordetTop;
     }
   }
 
