@@ -1,0 +1,36 @@
+@use "../../styles/snippets" as s;
+@import "../../styles/colors.scss";
+
+.cardBox{
+  width:200px ;
+  height:268px;
+  background: $white;
+  border-radius: 7px;
+  cursor: pointer;
+
+  .imgBox{
+    @include s.allCenter;
+    background-color: $blue;
+    border-radius: 8px 8px 0 0;
+    height: 180px;
+    width: 100%;
+
+    img{
+      max-width: 80%;
+      max-height: 80%;
+    }
+  }
+
+  .descriptionBox{
+    margin: 13px 24px;
+    h2{
+      font-size: 18px;
+      font-weight: 900;
+      margin-bottom: 7px;
+    }
+    p{
+      margin-top: 2px;
+      color: $greyDark;
+    }
+  }
+}

@@ -1,5 +1,6 @@
-.initialPageContainer {
-  h1 {
-    color: red;
-  }
+@import "../../styles/colors.scss";
+
+.initialPageBox {
+  padding: 40px 30px;
+  margin: 20px;
 }
