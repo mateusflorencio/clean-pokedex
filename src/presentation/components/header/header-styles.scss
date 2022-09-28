@@ -1,0 +1,36 @@
+@use "../../styles/snippets" as s;
+@import "../../styles/colors.scss";
+
+
+@mixin allCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+}
+
+.headerContainer {
+  width: 100%;
+  height: 80px;
+  background-color: $white;
+  @include s.allCenter;
+  flex-direction: row;
+
+  header {
+    width: 1000px;
+    height: 100%;
+    position: relative;
+    @include s.allCenter;
+
+    img {
+      max-height: 50px;
+      cursor: pointer;
+    }
+
+    .lupa {
+      position: absolute;
+      right: 20px;
+      cursor: pointer;
+    }
+  }
+}
