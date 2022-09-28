@@ -24,7 +24,7 @@ export const InitalPage: React.FC = () => {
       />
       </div>
       <div className={Styles.contentBox}>
-      <CardPokemon img={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png'}
+      <CardPokemon img={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png'}
             description={'description'}
             name={'Pokémon'}
             title={'Title'}
@@ -48,11 +48,11 @@ export const InitalPage: React.FC = () => {
       />
       </div>
       <div className={Styles.contentBox}>
-      <CardPokemon img={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png'}
+      <CardPokemon img={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png'}
             description={'description'}
             name={'Pokémon'}
             title={'Title'}
-            type={'water'}
+            type={'lightning'}
       />
       </div>
       <div className={Styles.contentBox}>
@@ -80,11 +80,11 @@ export const InitalPage: React.FC = () => {
       />
       </div>
       <div className={Styles.contentBox}>
-      <CardPokemon img={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png'}
+      <CardPokemon img={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png'}
             description={'description'}
             name={'Pokémon'}
             title={'Title'}
-            type={'fire'}
+            type={'lightning'}
       />
       </div>
       <div className={Styles.contentBox}>

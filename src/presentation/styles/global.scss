@@ -10,6 +10,7 @@
 
 body {
   background-color: $primary;
+  min-height: 100vh;
 }
 
 $colors: "fire", "water", "bug";

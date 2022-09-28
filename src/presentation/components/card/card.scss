@@ -7,52 +7,68 @@
   border-radius: 8px 8px 0 0;
 }
 
-.cardBox{
-  width:200px ;
-  height:268px;
+@mixin gradientColor($color) {
+  background: linear-gradient(to bottom, rgb(91, 91, 91) 0%,$color 30%, $color 100%);
+}
+
+.cardBox {
+  width: 200px;
+  height: 268px;
   background: $white;
   border-radius: 7px;
   cursor: pointer;
 
-  .imgBox{
+  .imgBox {
     @include s.allCenter;
     border-radius: 8px 8px 0 0;
     height: 180px;
     width: 100%;
     position: relative;
 
-    img{
+    img {
       max-width: 80%;
       max-height: 80%;
       z-index: 1;
+      animation: fadein 1s infinite alternate-reverse;
     }
 
-    .bg-fire{
-      background-color: $fire;
+    .bg-fire {
+      @include allAreaAbsolutWithRadiusBordetTop;
+      @include gradientColor($fire)
+    }
+
+    .bg-water {
+      @include gradientColor($water);
       @include allAreaAbsolutWithRadiusBordetTop;
     }
 
-    .bg-water{
-      background-color: $water;
+    .bg-bug {
+      @include gradientColor($bug);
       @include allAreaAbsolutWithRadiusBordetTop;
     }
 
-    .bg-bug{
-      background-color: $bug;
+    .bg-lightning {
+      @include gradientColor($lightning);
       @include allAreaAbsolutWithRadiusBordetTop;
     }
   }
 
-  .descriptionBox{
+  .descriptionBox {
     margin: 13px 24px;
-    h2{
+    h2 {
       font-size: 18px;
       font-weight: 900;
       margin-bottom: 7px;
     }
-    p{
+    p {
       margin-top: 2px;
       color: $greyDark;
     }
+  }
+}
+
+@keyframes fadein {
+  to {
+    transform: translateY(-7px);
   }
 }
