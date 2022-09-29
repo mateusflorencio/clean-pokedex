@@ -1,0 +1,5 @@
+@use "../../../../styles/mixin" as m;
+@import "../../../../styles/colors.scss";
+
+  @include m.generateBgWithHover("darken", 10%);
+

@@ -1,5 +1,9 @@
-import { Header } from '@/presentation/components'
 import React from 'react'
+import { Header } from '@/presentation/components'
+import Card from './components/image-card/img-card'
+import Buttom from './components/buttom/buttom'
+import Description from './components/description/description'
+import Picture from './components/picture/picture'
 import Styles from './poke-page.scss'
 
 export const PokePage: React.FC = () => (
@@ -7,40 +11,30 @@ export const PokePage: React.FC = () => (
   <Header/>
   <div className={Styles.pokePageBox}>
     <div className={Styles.btnBox}>
-      <div className={[Styles['bg-green'], Styles.btn].join(' ')} >back</div>
-      <div className={[Styles['bg-blue'], Styles.btn].join(' ')} >next</div>
+      <Buttom bgColor='blue' text='back'/>
+      <Buttom bgColor='green' text='next'/>
     </div>
 
     <div className={Styles.contentBox}>
+      <span className={Styles.outYellow}></span>
+      <Card
+        img='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/132.svg'
+        type='blue'
+      />
 
-      <div className={Styles.outYellow}></div>
-
-      <div className={[Styles['bg-fire-gradient-to-left'], Styles.bgImgBox].join(' ')}>
-        <div className={Styles.outWhite}></div>
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/6.svg" alt="" />
-      </div>
       <div className={Styles.descriptionBox}>
-        <h1>Charizardi</h1>
-        <h2>Habilidades</h2>
-        <p>text</p>
-        <p>text</p>
-        <h2>Formas</h2>
-        <p>text</p>
-        <p>text</p>
-        <h2>Altura</h2>
-        <p>cm</p>
-        <h2>Movimentos</h2>
-        <p>text</p>
-        <p>text</p>
-        <h2>Tipo</h2>
-        <p>text</p>
-        <p>text</p>
-
+        <h1>Ditto</h1>
+        <ul>
+        <Description title='Title' text={['any', 'other']}/>
+        <Description title='Title2' text={['any', 'other']}/>
+        <Description title='Title3' text={['any', 'other']}/>
+        </ul>
       </div>
 
       <div className={Styles.pictureBox}>
-        <div className={Styles.picture}> <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/132.svg" alt="" /> </div>
-        <div className={Styles.picture}><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png" alt="" />  </div>
+        <Picture img='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/132.svg'/>
+        <Picture img='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png'/>
+        <Picture img='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png'/>
       </div>
     </div>
   </div>

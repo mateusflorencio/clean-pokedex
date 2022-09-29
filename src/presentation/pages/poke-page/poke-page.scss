@@ -2,9 +2,6 @@
 @import "../../styles/colors.scss";
 @import "../../styles/colors-category-pokemon.scss";
 
-@include m.generateBgWithHover("darken", 10%);
-@include m.generateBgWithGradient(left, 30%);
-
 .pokePageBox {
   @include m.box;
   flex-direction: column;
@@ -13,17 +10,15 @@
   .btnBox {
     display: flex;
     justify-content: space-between;
-
-    .btn {
+    
+    button{
       @include m.wh(12.4rem, 3.3rem);
       @include m.allCenter;
-      @include m.borderRadius;
       font-weight: 700;
       font-size: 1.4rem;
       color: $white;
       margin-bottom: 2.5rem;
       margin-top: 2.5rem;
-      cursor: pointer;
     }
   }
 
@@ -41,64 +36,23 @@
       left: -40rem;
       z-index: 1;
     }
+  }
 
-    .bgImgBox {
-      @include m.borderRadius(1rem);
-      @include m.wh(26rem, 40rem);
-      margin-top: 6rem;
-      margin-left: 3.4rem;
-      position: relative;
+  .descriptionBox {
+    margin-top: 6rem;
+    font-size: 1.4rem;
+  }
 
-      .outWhite {
-        position: absolute;
-        background: $white;
-        @include m.wh(3.4rem, 115%);
-        left: -3.4rem;
-        z-index: 1;
-      }
+  .pictureBox {
+    margin-top: 6rem;
+    width: 14rem;
 
-      img {
-        max-height: 33rem;
-        height: 100%;
-        position: absolute;
-        bottom: -6rem;
-        right: -5rem;
-      }
-    }
+    div {
+      @include m.wh(7.9rem, 7.9rem);
+      margin-bottom: 2rem;
 
-    .descriptionBox {
-      margin-top: 6rem;
-      font-size: 1.4rem;
-
-      h2 {
-        margin-top: 2rem;
-      }
-
-      p {
-        margin-top: 1rem;
-      }
-    }
-
-    .pictureBox {
-      margin-top: 6rem;
-      width: 14rem;
-
-      .picture {
-        @include m.wh(7.9rem, 7.9rem);
-        @include m.borderRadius;
-        @include m.allCenter;
-        border: 1px solid $greyLigth;
-        margin-bottom: 2rem;
-        cursor: pointer;
-
-        &:hover {
-          box-shadow: 1px 1px 40px 1px rgb(144, 144, 144);
-        }
-
-        img {
-          max-width: 90%;
-          max-height: 90%;
-        }
+      &:hover {
+        box-shadow: 1px 1px 40px 1px rgb(144, 144, 144);
       }
     }
   }

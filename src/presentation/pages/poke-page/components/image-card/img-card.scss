@@ -1,0 +1,30 @@
+@use "../../../../styles/mixin" as m;
+@import "../../../../styles/colors.scss";
+
+.imageCardBoxComponent {
+  @include m.generateBgWithGradient(left, 30%);
+
+  .bgImgBox {
+    @include m.borderRadius(1rem);
+    @include m.wh(26rem, 40rem);
+    margin-top: 6rem;
+    margin-left: 3.4rem;
+    position: relative;
+
+    .outWhite {
+      position: absolute;
+      background: $white;
+      @include m.wh(3.4rem, 115%);
+      left: -3.4rem;
+      z-index: 1;
+    }
+
+    img {
+      max-height: 33rem;
+      height: 100%;
+      position: absolute;
+      bottom: -6rem;
+      right: -5rem;
+    }
+  }
+}

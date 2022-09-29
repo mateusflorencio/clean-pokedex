@@ -1,0 +1,14 @@
+@use "../../../../styles/mixin" as m;
+@import "../../../../styles/colors.scss";
+
+.pictureBoxContainer{
+  border: 1px solid $greyLigth;
+  @include m.borderRadius;
+  @include m.allCenter;
+  cursor: pointer;
+
+  img {
+    max-width: 90%;
+    max-height: 90%;
+  }
+}
