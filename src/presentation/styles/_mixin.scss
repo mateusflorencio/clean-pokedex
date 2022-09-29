@@ -1,4 +1,23 @@
-@mixin defineBgColorWithHover($color, $mode, $percente) {
+@import "./colors.scss";
+@import "./colors-category-pokemon.scss";
+
+$colors: (
+  "blue": $blue,
+  "green": $green,
+  "water": $water,
+  "bug": $bug,
+  "fire": $fire,
+  "lightning": $lightning,
+);
+
+@mixin box {
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+}
+
+// suport ////////////////////////////////////////////////////////
+@mixin bgColorWithHover($color, $mode, $percente) {
   background-color: $color;
   @if $mode == "darken" {
     &:hover {
@@ -10,29 +29,47 @@
     }
   } @else {
     &:hover {
-      background-color: $color
+      background-color: $color;
     }
   }
 }
+/////////////////////////////////////////////////////////////////
 
-@mixin generateClassBgWithHover($arrayColor, $mode, $percente) {
-  @each $name, $cor in $arrayColor {
+@mixin generateBgWithHover($mode, $percente) {
+  @each $name, $cor in $colors {
     .bg-#{$name} {
-      @include defineBgColorWithHover($cor, $mode, $percente);
+      @include bgColorWithHover($cor, $mode, $percente);
     }
   }
 }
 
-//gradient
-@mixin defineBgColorWithGradient($cor, $direction, $percente) {
-  background: linear-gradient(to $direction, $cor 0%,darken($cor, $percente) 100%)
-  
+// suport ////////////////////////////////////////////////////////
+@mixin bgColorWithGradient($cor, $direction, $percente) {
+  background: linear-gradient(to $direction, $cor 0%, darken($cor, $percente) 100%);
 }
+/////////////////////////////////////////////////////////////////
 
-@mixin generateClassBgWithGradient($arrayColor, $direction, $percente) {
-  @each $name, $cor in $arrayColor {
+@mixin generateBgWithGradient($direction, $percentege) {
+  @each $name, $cor in $colors {
     .bg-#{$name}-gradient-to-#{$direction} {
-      @include defineBgColorWithGradient($cor, $direction, $percente);
+      @include bgColorWithGradient($cor, $direction, $percentege);
     }
   }
+}
+
+@mixin wh($width: 100%, $height: 100%) {
+  width: $width;
+  height: $height;
+}
+
+@mixin borderRadius($radius: 0.8rem) {
+  border-radius: $radius;
+}
+
+@mixin allCenter {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  align-self: center;
 }

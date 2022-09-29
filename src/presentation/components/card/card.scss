@@ -1,73 +1,48 @@
-@use "../../styles/snippets" as s;
+@use "../../styles/mixin" as m;
 @import "../../styles/colors.scss";
 @import "../../styles/colors-category-pokemon.scss";
 
-@mixin allAreaAbsolutWithRadiusBordetTop {
-  @include s.allAreaAbsolute();
-  border-radius: 8px 8px 0 0;
-}
-
-@mixin gradientColor($color) {
-  background: linear-gradient(to bottom, $color 0%,darken($color, 25%) 100%);
-}
+@include m.generateBgWithGradient(bottom, 30%);
 
 .cardBox {
-  width: 200px;
-  height: 268px;
+  @include m.wh(20rem, 26.8rem);
   background: $white;
-  border-radius: 7px;
+  border-radius: 0.7rem;
   cursor: pointer;
 
   .imgBox {
-    @include s.allCenter;
-    border-radius: 8px 8px 0 0;
-    height: 180px;
-    width: 100%;
+    @include m.wh(100%,18rem);
+    @include m.allCenter;
+    border-radius: .8rem .8rem 0 0;
     position: relative;
 
     img {
       max-width: 80%;
       max-height: 80%;
       z-index: 1;
-      animation: fadein 1s infinite alternate-reverse;
-    }
-
-    .bg-fire {
-      @include allAreaAbsolutWithRadiusBordetTop;
-      @include gradientColor($fire)
-    }
-
-    .bg-water {
-      @include gradientColor($water);
-      @include allAreaAbsolutWithRadiusBordetTop;
-    }
-
-    .bg-bug {
-      @include gradientColor($bug);
-      @include allAreaAbsolutWithRadiusBordetTop;
-    }
-
-    .bg-lightning {
-      @include gradientColor($lightning);
-      @include allAreaAbsolutWithRadiusBordetTop;
+      animation: fadeIn 2s infinite alternate-reverse;
     }
   }
 
   .descriptionBox {
-    margin: 13px 24px;
+    margin: 1.3rem 2.4rem;
+    
     h2 {
-      font-size: 18px;
       font-weight: 900;
-      margin-bottom: 7px;
+      margin-bottom: .7rem;
     }
+
     p {
-      margin-top: 2px;
+      margin-top: .2rem;
       color: $greyDark;
     }
   }
 }
 
-@keyframes fadein {
+@keyframes fadeIn {
+  from{
+    transform: translateY(0px);
+  }
   to {
     transform: translateY(-7px);
   }

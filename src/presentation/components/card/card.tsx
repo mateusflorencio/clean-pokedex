@@ -11,8 +11,7 @@ type Props = {
 
 export const CardPokemon: React.FC<Props> = ({ img, description, name, title, type }: Props) => (
   <div className={Styles.cardBox}>
-  <div className={Styles.imgBox}>
-    <div className={Styles[`bg-${type}`]}></div>
+  <div className={[Styles.imgBox, Styles[`bg-${type}-gradient-to-bottom`]].join(' ')}>
     <img src={img } alt="" /></div>
   <div className={Styles.descriptionBox}>
     <h2>{ name }</h2>

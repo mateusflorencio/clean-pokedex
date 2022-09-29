@@ -4,7 +4,7 @@ import Styles from './header-styles.scss'
 
 export const Header: React.FC = () => (
   <div className={Styles.headerContainer}>
-    <header>
+    <header className={Styles.box}>
       <Logo/>
       <div className={Styles.lupa}>
         <Lupa/>

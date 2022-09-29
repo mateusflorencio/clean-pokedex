@@ -1,14 +1,13 @@
 @import "../../styles/colors.scss";
 
 .initialPageBox {
-  margin: 60px;
+  margin: 6rem;
   display: flex;
-  flex-grow: 1;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
 
-  .contentBox{
-    margin: 25px;
+  .contentBox {
+    margin: 2.5rem;
   }
 }
