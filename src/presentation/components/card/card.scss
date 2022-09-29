@@ -2,6 +2,21 @@
 @import "../../styles/colors.scss";
 @import "../../styles/colors-category-pokemon.scss";
 
+@mixin efeitoRotate {
+  animation: rotateIn 0.3s reverse;
+  .descriptionBox {
+    display: none;
+  }
+  .imgBox {
+    @include m.wh();
+    @include m.borderRadius();
+
+    img {
+      height: 100%;
+    }
+  }
+}
+
 @include m.generateBgWithGradient(bottom, 30%);
 
 .cardBox {
@@ -9,11 +24,16 @@
   background: $white;
   border-radius: 0.7rem;
   cursor: pointer;
+  position: relative;
+
+  &:hover {
+    @include efeitoRotate();
+  }
 
   .imgBox {
-    @include m.wh(100%,18rem);
+    @include m.wh(100%, 18rem);
     @include m.allCenter;
-    border-radius: .8rem .8rem 0 0;
+    border-radius: 0.8rem 0.8rem 0 0;
     position: relative;
 
     img {
@@ -26,24 +46,33 @@
 
   .descriptionBox {
     margin: 1.3rem 2.4rem;
-    
+
     h2 {
       font-weight: 900;
-      margin-bottom: .7rem;
+      margin-bottom: 0.7rem;
     }
 
     p {
-      margin-top: .2rem;
+      margin-top: 0.2rem;
       color: $greyDark;
     }
   }
 }
 
 @keyframes fadeIn {
-  from{
+  from {
     transform: translateY(0px);
   }
   to {
     transform: translateY(-7px);
+  }
+}
+
+@keyframes rotateIn {
+  from {
+    transform: rotateY(0);
+  }
+  to {
+    transform: rotateY(180deg);
   }
 }
