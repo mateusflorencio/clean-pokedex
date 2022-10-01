@@ -1,0 +1,71 @@
+@use "../../../../styles/mixin" as m;
+@import "../../../../styles/colors.scss";
+
+.modalSearchBox {
+  position: absolute;
+  display: block;
+  @include m.wh(100%, 100vh);
+  @include m.allCenter;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+
+  .bg {
+    @extend .modalSearchBox;
+    background-color: $greyDark;
+    opacity: 0.8;
+  }
+
+  .modal {
+    position: absolute;
+    background: $white;
+    @include m.allCenter;
+    @include m.borderRadius;
+    @include m.wh(70%, 20%);
+    z-index: 3;
+
+    .closeModal {
+      @include m.wh(3rem, 3rem);
+      @include m.allCenter;
+      @include m.borderRadius(2rem);
+      position: absolute;
+      top: -1rem;
+      right: -1rem;
+      background: $red;
+      color: white;
+      font-size: 2rem;
+      z-index: 5;
+      cursor: pointer;
+    }
+
+    .inputBox {
+      display: flex;
+      flex-direction: row;
+      border: 1px solid $greyDark;
+      @include m.borderRadius(2px);
+      @include m.allCenter;
+      justify-content: space-between !important;
+      @include m.wh(70%, auto);
+      padding-right: 1rem;
+
+
+      input[type="text"] {
+        @include m.wh("", 5rem);
+        font-size: 1.4rem;
+        padding: 2rem;
+        z-index: 4;
+        outline: none;
+        border: none;
+
+        &:focus {
+          outline: none;
+        }
+
+        &::placeholder {
+          color: $greyDark;
+        }
+      }
+    }
+  }
+}
