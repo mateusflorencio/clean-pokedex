@@ -11,14 +11,19 @@ export const Header: React.FC = () => {
   const [stateModalSearch, setStateModalSearch] = useRecoilState(stateModalSearchState)
 
   return (
-  <div className={Styles.headerContainer}>
-    <header className={Styles.box}>
-      <Logo/>
-      <div onClick={() => { setStateModalSearch(!stateModalSearch) }} className={Styles.lupa}>
-        <Lupa/>
-      </div>
-    </header>
-    {stateModalSearch && <SearchModal/> }
-  </div>
+    <div className={Styles.headerContainer}>
+      <header className={Styles.box}>
+        <Logo />
+        <div
+          onClick={() => {
+            setStateModalSearch(!stateModalSearch)
+          }}
+          className={Styles.lupa}
+        >
+          <Lupa />
+        </div>
+      </header>
+      <SearchModal state={stateModalSearch} setState={setStateModalSearch}/>
+    </div>
   )
 }

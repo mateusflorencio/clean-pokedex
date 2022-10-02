@@ -51,9 +51,10 @@
 
 
       input[type="text"] {
-        @include m.wh("", 5rem);
+        @include m.wh(100%, 5rem);
         font-size: 1.4rem;
         padding: 2rem;
+        margin-right: 1rem;
         z-index: 4;
         outline: none;
         border: none;
@@ -65,6 +66,10 @@
         &::placeholder {
           color: $greyDark;
         }
+      }
+      
+      div{
+        cursor: pointer;
       }
     }
   }
