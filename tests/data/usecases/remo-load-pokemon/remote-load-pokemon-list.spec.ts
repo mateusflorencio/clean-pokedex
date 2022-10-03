@@ -25,8 +25,7 @@ describe('RemoteLoadPokemonListResult', () => {
   })
 
   it('should return a list of pokemon', async () => {
-    const output = await sut.listAll()
-    expect(output).toEqual(responseHttpClient.body)
+    await expect(sut.listAll()).resolves.toEqual(responseHttpClient.body)
   })
 
   it('should return a list empty if bad request', async () => {
