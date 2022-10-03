@@ -16,6 +16,7 @@
   "author": "Mateus florêncio",
   "license": "GNU GPL3",
   "devDependencies": {
+    "@faker-js/faker": "^7.5.0",
     "@jest/types": "^29.0.3",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -32,8 +33,6 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.0.1",
-    "eslint-plugin-react": "^7.31.8",
-    "eslint-plugin-standard": "^5.0.0",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.1",
     "identity-obj-proxy": "^3.0.0",
