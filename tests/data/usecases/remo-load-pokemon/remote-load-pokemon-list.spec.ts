@@ -29,8 +29,13 @@ describe('RemoteLoadPokemonListResult', () => {
     expect(output).toEqual(responseHttpClient.body)
   })
 
-  it('should return a list empty', async () => {
+  it('should return a list empty if bad request', async () => {
     httpClient.request.mockResolvedValueOnce(mockHttpResponse(HttpStatusCode.badRequest))
     await expect(sut.listAll()).resolves.toEqual([])
+  })
+
+  it('should return throw if throws', async () => {
+    httpClient.request.mockRejectedValueOnce(new Error())
+    await expect(sut.listAll()).rejects.toThrow()
   })
 })
