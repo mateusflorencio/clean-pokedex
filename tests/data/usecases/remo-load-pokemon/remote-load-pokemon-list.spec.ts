@@ -23,4 +23,9 @@ describe('RemoteLoadPokemonListResult', () => {
     httpClient.request.mockRejectedValueOnce(new Error())
     expect(httpClient.request).rejects.toThrowError()
   })
+
+  it('should return a list of pokemon', async () => {
+    const output = await sut.listAll()
+    expect(output).toEqual(responseHttpClient.body)
+  })
 })
