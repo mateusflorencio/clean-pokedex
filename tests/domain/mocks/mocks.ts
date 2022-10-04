@@ -10,3 +10,19 @@ export const fakeHttpRequest = (method: HttpMethod = 'get', url: string = faker.
   method,
   url
 })
+
+export const makeHttpReponseLoadPokemons = (statusCode: HttpStatusCode = HttpStatusCode.ok): HttpResponse => ({
+  statusCode,
+  body: {
+    count: 1154,
+    next: faker.internet.url(),
+    results: [{
+      name: faker.name.firstName(),
+      url: faker.internet.url()
+    },
+    {
+      name: faker.name.firstName(),
+      url: faker.internet.url()
+    }]
+  }
+})
