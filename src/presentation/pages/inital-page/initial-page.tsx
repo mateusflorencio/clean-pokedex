@@ -1,27 +1,27 @@
 import Styles from './initial-page-styles.scss'
-import { IListAllPokemon } from '@/domain/usecases'
 import { Header } from '@/presentation/components'
 import { listPokemonState, PokemonsList } from './components'
 
 import { useRecoilState } from 'recoil'
 import React, { useEffect } from 'react'
+import { ILoadPokemons } from '@/domain/usecases/load-pokemons'
 
 type Props = {
-  listAllPokemon: IListAllPokemon
+  load: ILoadPokemons
 }
 
-export const InitalPage: React.FC<Props> = ({ listAllPokemon }: Props) => {
-  const [state, setState] = useRecoilState(listPokemonState)
+export const InitalPage: React.FC<Props> = ({ load }: Props) => {
+  const [{ limit, offset, pokemons }, setState] =
+    useRecoilState(listPokemonState)
+
   useEffect(() => {
-    listAllPokemon
-      .listAll()
-      .then((pokemons) => setState((old) => ({ ...old, pokemons })))
+    load.load(offset, limit).then((res) => setState((old) => ({ ...old, res })))
   })
   return (
     <>
       <Header />
       <div className={Styles.initialPageBox}>
-        {<PokemonsList pokemons={state.pokemons} />}
+        {<PokemonsList pokemons={pokemons} />}
       </div>
     </>
   )
