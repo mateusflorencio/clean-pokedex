@@ -1,1 +1,2 @@
-export * from './pokemon-result-model'
+export * from './pokemon'
+export * from './pokemon-url'
