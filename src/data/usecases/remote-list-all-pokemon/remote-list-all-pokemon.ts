@@ -1,4 +1,4 @@
-import { UnexpectedError } from '@/data/errors'
+import { ServerError, UnexpectedError } from '@/data/errors'
 import { HttpStatusCode, IHttpClient } from '@/data/protocols'
 import { Pokemon } from '@/domain/models'
 import { Pokemon as PokemonList } from '@/data/models'
@@ -14,6 +14,7 @@ export class RemoteListAllPokemon implements IListAllPokemon {
     switch (httpReponse.statusCode) {
       case HttpStatusCode.ok: return httpReponse.body
       case HttpStatusCode.badRequest: return []
+      case 500: throw new ServerError()
       default: throw new UnexpectedError()
     }
   }

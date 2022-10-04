@@ -3,6 +3,7 @@ import { faker } from '@faker-js/faker'
 import { RemoteListAllPokemon } from '@/data/usecases'
 import { fakeHttpResponse } from '@/../tests/domain/mocks'
 import { HttpStatusCode, IHttpClient } from '@/data/protocols'
+import { UnexpectedError } from '@/data/errors'
 
 const fakeUrl = faker.internet.url()
 const responseHttpClient = fakeHttpResponse()
@@ -33,8 +34,18 @@ describe('RemoteListAllPokemon', () => {
     await expect(sut.listAll()).resolves.toEqual([])
   })
 
+  it('should return throw if serverError',async () => {
+    httpClient.request.mockResolvedValueOnce(fakeHttpResponse(HttpStatusCode.serverError))
+    await expect(sut.listAll()).rejects.toThrow()
+  })
+
   it('should return throw if throws', async () => {
     httpClient.request.mockRejectedValueOnce(new Error())
     await expect(sut.listAll()).rejects.toThrow()
+  })
+
+  it('should return throw if throws',async () => {
+    httpClient.request.mockResolvedValueOnce({ statusCode: 1000 })
+    await expect(sut.listAll()).rejects.toThrow(new UnexpectedError())
   })
 })
