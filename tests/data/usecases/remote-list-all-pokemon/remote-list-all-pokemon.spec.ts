@@ -1,12 +1,12 @@
 import { faker } from '@faker-js/faker'
 
 import { RemoteListAllPokemon } from '@/data/usecases'
-import { fakeHttpResponse } from '@/../tests/domain/mocks'
+import { makeHttpResponse } from '@/../tests/domain/mocks'
 import { HttpStatusCode, IHttpClient } from '@/data/protocols'
 import { UnexpectedError } from '@/data/errors'
 
 const fakeUrl = faker.internet.url()
-const responseHttpClient = fakeHttpResponse()
+const responseHttpClient = makeHttpResponse()
 
 describe('RemoteListAllPokemon', () => {
   let sut: RemoteListAllPokemon
@@ -30,12 +30,12 @@ describe('RemoteListAllPokemon', () => {
   })
 
   it('should return a list empty if bad request', async () => {
-    httpClient.request.mockResolvedValueOnce(fakeHttpResponse(HttpStatusCode.badRequest))
+    httpClient.request.mockResolvedValueOnce(makeHttpResponse(HttpStatusCode.badRequest))
     await expect(sut.listAll()).resolves.toEqual([])
   })
 
   it('should return throw if serverError',async () => {
-    httpClient.request.mockResolvedValueOnce(fakeHttpResponse(HttpStatusCode.serverError))
+    httpClient.request.mockResolvedValueOnce(makeHttpResponse(HttpStatusCode.serverError))
     await expect(sut.listAll()).rejects.toThrow()
   })
 

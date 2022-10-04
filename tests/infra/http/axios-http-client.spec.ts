@@ -1,11 +1,11 @@
 import { AxiosHttpClient } from '@/infra/http'
-import { fakeHttpRequest,fakeHttpResponse } from '@/tests/domain/mocks'
+import { fakeHttpRequest,makeAxiosResponse } from '@/tests/domain/mocks'
 import axios from 'axios'
 
 jest.mock('axios')
 
 const fakeRequest = fakeHttpRequest()
-const fakeResponse = fakeHttpResponse()
+const fakeAxiosResponse = makeAxiosResponse()
 
 describe('AxiosHttpClient', () => {
   let sut: AxiosHttpClient
@@ -13,7 +13,7 @@ describe('AxiosHttpClient', () => {
 
   beforeAll(() => {
     mockedAxios = axios as jest.Mocked<typeof axios>
-    mockedAxios.request.mockResolvedValue({ data: fakeResponse.body, status: fakeResponse.statusCode })
+    mockedAxios.request.mockResolvedValue(fakeAxiosResponse)
   })
 
   beforeEach(() => {
@@ -32,7 +32,10 @@ describe('AxiosHttpClient', () => {
 
   it('should return with correct values',async () => {
     const httpResponse = await sut.request(fakeRequest)
-    expect(httpResponse).toBe(fakeResponse.body)
+    expect(httpResponse).toEqual({
+      statusCode: fakeAxiosResponse.status,
+      body: fakeAxiosResponse.data
+    })
   })
 
   it('should return throw if request throws',async () => {

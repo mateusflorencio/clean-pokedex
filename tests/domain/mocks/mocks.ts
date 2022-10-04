@@ -2,7 +2,7 @@ import { HttpStatusCode, HttpResponse, HttpRequest, HttpMethod } from '@/data/pr
 import { faker } from '@faker-js/faker'
 import { AxiosResponse } from 'axios'
 
-export const fakeHttpResponse = (statusCode: HttpStatusCode = HttpStatusCode.ok): HttpResponse => ({
+export const makeHttpResponse = (statusCode: HttpStatusCode = HttpStatusCode.ok): HttpResponse => ({
   statusCode,
   body: [faker.random.words(), faker.random.words()]
 })

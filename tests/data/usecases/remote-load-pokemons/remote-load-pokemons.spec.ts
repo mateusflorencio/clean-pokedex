@@ -1,17 +1,18 @@
-import { IHttpClient, HttpResponse } from '@/data/protocols'
+import { IHttpClient } from '@/data/protocols'
 import { RemoteLoadPokemons } from '@/data/usecases'
-import { makeAxiosResponse } from '@/tests/domain/mocks'
+import { makeHttpResponse } from '@/tests/domain/mocks'
 import env from '@/main/config/env'
-import { UnexpectedError } from '@/data/errors'
+import { ServerError, UnexpectedError } from '@/data/errors'
 import { faker } from '@faker-js/faker'
 
-const httpClienteReponse = makeAxiosResponse()
+const fakeHttpResponse = makeHttpResponse()
 
 describe('RemoteLoadPokemons', () => {
   let mockedHttpClient: jest.Mocked<IHttpClient>
   let sut: RemoteLoadPokemons
+
   beforeEach(() => {
-    mockedHttpClient = { request: jest.fn().mockResolvedValue(httpClienteReponse) }
+    mockedHttpClient = { request: jest.fn().mockResolvedValue(fakeHttpResponse) }
     sut = new RemoteLoadPokemons(mockedHttpClient)
   })
 
@@ -30,17 +31,17 @@ describe('RemoteLoadPokemons', () => {
   })
 
   it('should return with correct values',async () => {
-    expect(await sut.load()).toEqual(httpClienteReponse.data)
+    expect(await sut.load()).toEqual(fakeHttpResponse.body)
   })
 
   it('should return a list empty if bad request', async () => {
-    mockedHttpClient.request.mockResolvedValueOnce(makeAxiosResponse(400) as unknown as HttpResponse)
+    mockedHttpClient.request.mockResolvedValueOnce({ statusCode: 400 })
     await expect(sut.load()).resolves.toEqual([])
   })
 
   it('should return throw if serverError',async () => {
-    mockedHttpClient.request.mockResolvedValueOnce(makeAxiosResponse(500) as unknown as HttpResponse)
-    await expect(sut.load()).rejects.toThrow()
+    mockedHttpClient.request.mockResolvedValueOnce({ statusCode: 500 })
+    await expect(sut.load()).rejects.toThrow(new ServerError())
   })
 
   it('should return throw if throws',async () => {
