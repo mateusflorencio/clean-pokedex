@@ -1,5 +1,5 @@
 import { UrlPokemon } from '../models'
 
 export interface ILoadPokemons {
-  load: (offset: number, limit: number) => Promise<UrlPokemon[]>
+  load: (offset: string, limit: string) => Promise<UrlPokemon[]>
 }

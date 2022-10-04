@@ -1,5 +1,6 @@
 import { HttpStatusCode, HttpResponse, HttpRequest, HttpMethod } from '@/data/protocols'
 import { faker } from '@faker-js/faker'
+import { AxiosResponse } from 'axios'
 
 export const fakeHttpResponse = (statusCode: HttpStatusCode = HttpStatusCode.ok): HttpResponse => ({
   statusCode,
@@ -11,11 +12,13 @@ export const fakeHttpRequest = (method: HttpMethod = 'get', url: string = faker.
   url
 })
 
-export const makeHttpReponseLoadPokemons = (statusCode: HttpStatusCode = HttpStatusCode.ok): HttpResponse => ({
-  statusCode,
-  body: {
+export const makeAxiosResponse = (statusCode: number = HttpStatusCode.ok): AxiosResponse => ({
+  status: statusCode,
+  statusText: '',
+  data: {
     count: 1154,
     next: faker.internet.url(),
+    previous: faker.internet.url(),
     results: [{
       name: faker.name.firstName(),
       url: faker.internet.url()
@@ -24,5 +27,8 @@ export const makeHttpReponseLoadPokemons = (statusCode: HttpStatusCode = HttpSta
       name: faker.name.firstName(),
       url: faker.internet.url()
     }]
-  }
+  },
+  headers: {},
+  config: {},
+  request: {}
 })
