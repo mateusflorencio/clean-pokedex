@@ -4,7 +4,7 @@ import { Pokemon } from '@/domain/models'
 import { Pokemon as PokemonList } from '@/data/models'
 import { IListAllPokemon } from '@/domain/usecases'
 
-export class RemoteLoadPokemonListResult implements IListAllPokemon {
+export class RemoteListAllPokemon implements IListAllPokemon {
   constructor (
     private readonly url: string,
     private readonly httpClient: IHttpClient<PokemonList[]>) {}

@@ -1,19 +1,19 @@
 import { faker } from '@faker-js/faker'
 
-import { RemoteLoadPokemonListResult } from '@/data/usecases/remote-load-pokemon'
+import { RemoteListAllPokemon } from '@/data/usecases'
 import { fakeHttpResponse } from '@/../tests/domain/mocks'
 import { HttpStatusCode, IHttpClient } from '@/data/protocols'
 
 const fakeUrl = faker.internet.url()
 const responseHttpClient = fakeHttpResponse()
 
-describe('RemoteLoadPokemonListResult', () => {
-  let sut: RemoteLoadPokemonListResult
+describe('RemoteListAllPokemon', () => {
+  let sut: RemoteListAllPokemon
   let httpClient: jest.Mocked<IHttpClient>
 
   beforeEach(() => {
     httpClient = { request: jest.fn().mockReturnValue(responseHttpClient) }
-    sut = new RemoteLoadPokemonListResult(fakeUrl, httpClient)
+    sut = new RemoteListAllPokemon(fakeUrl, httpClient)
   })
 
   it('test IHttpClient', async () => {
