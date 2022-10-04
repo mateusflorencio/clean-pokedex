@@ -4,7 +4,9 @@ import { Pokemon } from '@/domain/models'
 import { IListAllPokemon } from '@/domain/usecases'
 
 export class RemoteLoadPokemonListResult implements IListAllPokemon {
-  constructor (private readonly url: string, private readonly httpClient: IHttpClient<RemoteLoadPokemonListResult.Pokemon[]>) {}
+  constructor (
+    private readonly url: string,
+    private readonly httpClient: IHttpClient<RemoteLoadPokemonListResult.Pokemon[]>) {}
 
   async listAll (): Promise<Pokemon[]> {
     const httpReponse = await this.httpClient.request({ method: 'get', url: this.url })

@@ -1,11 +1,11 @@
 import { faker } from '@faker-js/faker'
 
 import { RemoteLoadPokemonListResult } from '@/data/usecases/remote-load-pokemon'
-import { mockHttpResponse } from '@/tests/data/mocks'
+import { fakeHttpResponse } from '@/../tests/domain/mocks'
 import { HttpStatusCode, IHttpClient } from '@/data/protocols'
 
 const fakeUrl = faker.internet.url()
-const responseHttpClient = mockHttpResponse()
+const responseHttpClient = fakeHttpResponse()
 
 describe('RemoteLoadPokemonListResult', () => {
   let sut: RemoteLoadPokemonListResult
@@ -29,7 +29,7 @@ describe('RemoteLoadPokemonListResult', () => {
   })
 
   it('should return a list empty if bad request', async () => {
-    httpClient.request.mockResolvedValueOnce(mockHttpResponse(HttpStatusCode.badRequest))
+    httpClient.request.mockResolvedValueOnce(fakeHttpResponse(HttpStatusCode.badRequest))
     await expect(sut.listAll()).resolves.toEqual([])
   })
 
