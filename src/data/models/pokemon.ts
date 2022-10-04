@@ -1,10 +1,10 @@
 export type Pokemon = {
   id: number
   name: string
-  abilitys: string[]
+  abilities: object[]
   forms: string[]
   height: string
-  moves: string[]
+  moves: object[]
   type: string
-  img: string[]
+  sprites: object[]
 }
