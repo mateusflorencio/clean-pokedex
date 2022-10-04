@@ -1,100 +1,27 @@
-import { CardPokemon, Header } from '@/presentation/components'
-import React from 'react'
 import Styles from './initial-page-styles.scss'
+import { IListAllPokemon } from '@/domain/usecases'
+import { Header } from '@/presentation/components'
+import { listPokemonState, PokemonsList } from './components'
 
-export const InitalPage: React.FC = () => {
+import { useRecoilState } from 'recoil'
+import React, { useEffect } from 'react'
+
+type Props = {
+  listAllPokemon: IListAllPokemon
+}
+
+export const InitalPage: React.FC<Props> = ({ listAllPokemon }: Props) => {
+  const [state, setState] = useRecoilState(listPokemonState)
+  useEffect(() => {
+    listAllPokemon
+      .listAll()
+      .then((pokemons) => setState((old) => ({ ...old, pokemons })))
+  })
   return (
     <>
-      <Header/>
-      <div className={ Styles.initialPageBox }>
-      <div className={Styles.contentBox}>
-      <CardPokemon img={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png'}
-            description={'description'}
-            name={'Pokémon'}
-            title={'Title'}
-            type={'fire'}
-      />
-      </div>
-      <div className={Styles.contentBox}>
-      <CardPokemon img={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png'}
-            description={'description'}
-            name={'Pokémon'}
-            title={'Title'}
-            type={'water'}
-      />
-      </div>
-      <div className={Styles.contentBox}>
-      <CardPokemon img={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png'}
-            description={'description'}
-            name={'Pokémon'}
-            title={'Title'}
-            type={'fire'}
-      />
-      </div>
-      <div className={Styles.contentBox}>
-      <CardPokemon img={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png'}
-            description={'description'}
-            name={'Pokémon'}
-            title={'Title'}
-            type={'fire'}
-      />
-      </div>
-      <div className={Styles.contentBox}>
-      <CardPokemon img={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png'}
-            description={'description'}
-            name={'Pokémon'}
-            title={'Title'}
-            type={'bug'}
-      />
-      </div>
-      <div className={Styles.contentBox}>
-      <CardPokemon img={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png'}
-            description={'description'}
-            name={'Pokémon'}
-            title={'Title'}
-            type={'lightning'}
-      />
-      </div>
-      <div className={Styles.contentBox}>
-      <CardPokemon img={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png'}
-            description={'description'}
-            name={'Pokémon'}
-            title={'Title'}
-            type={'water'}
-      />
-      </div>
-      <div className={Styles.contentBox}>
-      <CardPokemon img={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png'}
-            description={'description'}
-            name={'Pokémon'}
-            title={'Title'}
-            type={'bug'}
-      />
-      </div>
-      <div className={Styles.contentBox}>
-      <CardPokemon img={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png'}
-            description={'description'}
-            name={'Pokémon'}
-            title={'Title'}
-            type={'fire'}
-      />
-      </div>
-      <div className={Styles.contentBox}>
-      <CardPokemon img={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png'}
-            description={'description'}
-            name={'Pokémon'}
-            title={'Title'}
-            type={'lightning'}
-      />
-      </div>
-      <div className={Styles.contentBox}>
-      <CardPokemon img={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png'}
-            description={'description'}
-            name={'Pokémon'}
-            title={'Title'}
-            type={'bug'}
-      />
-      </div>
+      <Header />
+      <div className={Styles.initialPageBox}>
+        {<PokemonsList pokemons={state.pokemons} />}
       </div>
     </>
   )

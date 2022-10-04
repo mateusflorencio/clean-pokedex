@@ -4,8 +4,8 @@ import Styles from './card.scss'
 type Props = {
   img: string
   name: string
-  title: string
-  description: string
+  title?: string
+  description?: string
   type: string
 }
 
