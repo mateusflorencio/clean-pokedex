@@ -16,7 +16,7 @@ export const InitalPage: React.FC<Props> = ({ load }: Props) => {
 
   useEffect(() => {
     load.load(offset, limit).then((res) => setState((old) => ({ ...old, res })))
-  })
+  }, [pokemons])
   return (
     <>
       <Header />
