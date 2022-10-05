@@ -48,7 +48,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new DefinePlugin({
-      'process.env.API_URL': JSON.stringify('https://pokeapi.co/api/v2')
+      'process.env.URL_API': JSON.stringify('https://pokeapi.co/api/v2/pokemon')
     }),
     new HtmlWebpackPlugin({
       template: './template.dev.html'

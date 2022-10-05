@@ -9,7 +9,7 @@ export class RemoteLoadPokemons implements ILoadPokemons {
     private readonly httpClient: IHttpClient<ILoadPokemons.Response>) {}
 
   async load (offset: string = '0' , limit: string = '20'): Promise<ILoadPokemons.Response | []> {
-    const url = `${env.url}/pokemon/?offset=${offset}&limit=${limit}`
+    const url = `${env.url}/?offset=${offset}&limit=${limit}`
 
     const httpReponse = await this.httpClient.request({ url ,method: 'get' })
     switch (httpReponse.statusCode) {
