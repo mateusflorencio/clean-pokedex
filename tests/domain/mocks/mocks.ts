@@ -2,6 +2,7 @@ import { HttpStatusCode, HttpResponse, HttpRequest, HttpMethod } from '@/data/pr
 import { faker } from '@faker-js/faker'
 import { AxiosResponse } from 'axios'
 import { UrlPokemon } from '@/domain/models'
+import { makeNameAndUrl, toDoArrayForLength } from './helpers'
 
 export const makeHttpResponse = (statusCode: HttpStatusCode = HttpStatusCode.ok): HttpResponse => ({
   statusCode,
@@ -36,18 +37,6 @@ export const makeAxiosResponse = (statusCode: number = HttpStatusCode.ok): Axios
   request: {}
 })
 
-export const makeUrlPokemon = (): UrlPokemon[] => ([{
-  name: faker.name.firstName(),
-  url: faker.internet.url()
-},
-{
-  name: faker.name.firstName(),
-  url: faker.internet.url()
-},
-{
-  name: faker.name.firstName(),
-  url: faker.internet.url()
-},{
-  name: faker.name.firstName(),
-  url: faker.internet.url()
-}])
+export const makeUrlPokemon = (): UrlPokemon[] => (
+  toDoArrayForLength(faker.random.numeric(1), makeNameAndUrl())
+)
