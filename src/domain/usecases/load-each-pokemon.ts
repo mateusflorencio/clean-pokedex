@@ -1,5 +1,5 @@
 import { Pokemon, UrlPokemon } from '../models'
 
-export interface IListEachPokemon {
+export interface ILoadEachPokemon {
   loadEach: (list: UrlPokemon[]) => Promise<Pokemon[]>
 }
