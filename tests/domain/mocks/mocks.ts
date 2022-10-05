@@ -38,5 +38,5 @@ export const makeAxiosResponse = (statusCode: number = HttpStatusCode.ok): Axios
 })
 
 export const makeUrlPokemon = (): UrlPokemon[] => (
-  toDoArrayForLength(faker.random.numeric(1), makeNameAndUrl())
+  toDoArrayForLength(Number(faker.random.numeric(1)), makeNameAndUrl())
 )
