@@ -1,21 +1,11 @@
-import { ServerError, UnexpectedError } from '@/data/errors'
-import { HttpStatusCode, IHttpClient } from '@/data/protocols'
-import { Pokemon } from '@/domain/models'
-import { Pokemon as PokemonList } from '@/data/models'
+import { Pokemon, UrlPokemon } from '@/domain/models'
 import { IListAllPokemon } from '@/domain/usecases'
+import { ILoadEachPokemon } from '@/domain/usecases/load-each-pokemon'
 
 export class RemoteListAllPokemon implements IListAllPokemon {
-  constructor (
-    private readonly url: string,
-    private readonly httpClient: IHttpClient<PokemonList[]>) {}
+  constructor (private readonly loadEach: ILoadEachPokemon) {}
 
-  async listAll (): Promise<Pokemon[]> {
-    const httpReponse = await this.httpClient.request({ method: 'get', url: this.url })
-    switch (httpReponse.statusCode) {
-      case HttpStatusCode.ok: return httpReponse.body
-      case HttpStatusCode.badRequest: return []
-      case 500: throw new ServerError()
-      default: throw new UnexpectedError()
-    }
+  async listAll (list: UrlPokemon[]): Promise<Pokemon[]> {
+    return this.loadEach.loadEach(list)
   }
 }

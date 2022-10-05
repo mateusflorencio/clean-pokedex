@@ -1,5 +1,5 @@
-import { Pokemon } from '../models'
+import { Pokemon, UrlPokemon } from '../models'
 
 export interface IListAllPokemon {
-  listAll: () => Promise<Pokemon[]>
+  listAll: (list: UrlPokemon[]) => Promise<Pokemon[]>
 }
