@@ -1,5 +1,11 @@
-
-  .itemlist {
-    margin: 2.5rem;
+.pokemonsList {
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    li {
+      margin: 2.5rem;
+    }
   }
-
+}
