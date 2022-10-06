@@ -6,6 +6,7 @@ export class RemoteListAllPokemon implements IListAllPokemon {
   constructor (private readonly loadEach: ILoadEachPokemon) {}
 
   async listAll (list: UrlPokemon[]): Promise<Pokemon[]> {
-    return this.loadEach.loadEach(list)
+    const result = await this.loadEach.loadEach(list)
+    return result
   }
 }
