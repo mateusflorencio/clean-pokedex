@@ -6,8 +6,8 @@ export const stateInitalPage = atom({
   key: 'stateInitalPage',
   default: {
     result: [] as UrlPokemon[],
-    offset: '0',
-    limit: '20',
+    offset: 0,
+    limit: 20,
     pokemons: [] as Pokemon[],
     count: 0,
     next: '',

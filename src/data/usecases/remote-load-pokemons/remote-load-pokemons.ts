@@ -8,7 +8,7 @@ export class RemoteLoadPokemons implements ILoadPokemons {
   constructor (
     private readonly httpClient: IHttpClient) {}
 
-  async load (offset: string = '0' , limit: string = '20'): Promise<ILoadPokemons.Response | null> {
+  async load (offset: number = 0 , limit: number = 20): Promise<ILoadPokemons.Response | null> {
     const url = `${env.url}/?offset=${offset}&limit=${limit}`
 
     const httpReponse = await this.httpClient.request({ url ,method: 'get' })

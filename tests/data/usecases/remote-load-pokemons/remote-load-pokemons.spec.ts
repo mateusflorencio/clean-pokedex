@@ -30,8 +30,8 @@ describe('RemoteLoadPokemons', () => {
   })
 
   it('should call httpClient with correct params',async () => {
-    const offset = faker.random.numeric()
-    const limit = faker.random.numeric()
+    const offset = Number(faker.random.numeric())
+    const limit = Number(faker.random.numeric())
     await sut.load(offset, limit)
     const thisUrl = `${env.url}/?offset=${offset}&limit=${limit}`
     expect(mockedHttpClient.request).toHaveBeenCalledWith({ url: thisUrl, method: 'get' })
