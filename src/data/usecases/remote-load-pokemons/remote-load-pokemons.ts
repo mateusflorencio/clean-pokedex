@@ -6,20 +6,27 @@ import env from '@/main/config/env'
 
 export class RemoteLoadPokemons implements ILoadPokemons {
   constructor (
-    private readonly httpClient: IHttpClient<ILoadPokemons.Response>) {}
+    private readonly httpClient: IHttpClient) {}
 
-  async load (offset: string = '0' , limit: string = '20'): Promise<ILoadPokemons.Response | []> {
+  async load (offset: string = '0' , limit: string = '20'): Promise<ILoadPokemons.Response | null> {
     const url = `${env.url}/?offset=${offset}&limit=${limit}`
 
     const httpReponse = await this.httpClient.request({ url ,method: 'get' })
     switch (httpReponse.statusCode) {
-      case 200: return httpReponse.body
-      case 400: return []
+      case 200: return map(httpReponse.body)
+      case 400: return null
       case 500: throw new ServerError()
       default : throw new UnexpectedError()
     }
   }
 }
+
+export const map = (body: any): RemoteLoadPokemons.Response => ({
+  count: body.count,
+  next: body.next,
+  previous: body.previous,
+  result: body.results
+})
 
 export namespace RemoteLoadPokemons {
   export type Response = {
