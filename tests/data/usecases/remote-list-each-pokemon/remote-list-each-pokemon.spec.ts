@@ -1,8 +1,10 @@
-import { makeHttpResponse, makeUrlPokemon } from '@/tests/domain/mocks'
+import { makeAxiosResponseWithPokemon, makeUrlPokemon } from '@/tests/domain/mocks'
 import { IHttpClient } from '@/data/protocols'
 import { RemoteListEachPokemon } from '@/data/usecases'
+import { map as util } from '@/data/usecases/remote-list-each-pokemon/helpers'
+import { map as axiosHelpers } from '@/infra/http/helpers'
 
-const fakeResponse = makeHttpResponse()
+const fakeResponse = axiosHelpers(makeAxiosResponseWithPokemon())
 const fakeUrlPokemon = makeUrlPokemon()
 
 describe('RemoteListEachPokemon', () => {
@@ -24,7 +26,7 @@ describe('RemoteListEachPokemon', () => {
 
   it('should return with correct values',async () => {
     const res = []
-    fakeUrlPokemon.forEach(() => res.push(fakeResponse.body))
+    fakeUrlPokemon.forEach(() => res.push(util(fakeResponse.body)))
     expect(await sut.loadEach(fakeUrlPokemon)).toEqual(res)
   })
 
