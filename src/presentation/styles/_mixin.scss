@@ -4,10 +4,26 @@
 $colors: (
   "blue": $blue,
   "green": $green,
+  "fire": $fire,
   "water": $water,
   "bug": $bug,
-  "fire": $fire,
-  "lightning": $lightning,
+  "electric": $electric,
+  "grass": $grass,
+  "dark": $dark,
+  "dragon": $dragon,
+  "normal": $normal,
+  "ground": $ground,
+  "rock": $rock,
+  "ghost": $ghost,
+  "steel": $steel,
+  "psychic": $psychic,
+  "ice": $ice,
+  "fairy": $fairy,
+  "unknown": $unknown,
+  "shadow": $shadow,
+  "poison": $poison,
+  "flying": $flying,
+  "fighting": $fighting,
 );
 
 @mixin box {
