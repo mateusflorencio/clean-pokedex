@@ -1,20 +1,10 @@
-const path = require('path')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { DefinePlugin } = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { merge } = require('webpack-merge')
+const common = require('./webpack.common')
 
-module.exports = {
+module.exports = merge(common, {
   mode: 'development',
-  entry: './src/main/index.tsx',
-  output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'main-bundle-[hash].js',
-    publicPath: '/'
-  },
-  resolve: {
-    extensions: ['.ts', '.tsx', '.js', 'scss'],
-    alias: { '@': path.join(__dirname, 'src') }
-  },
   module: {
     rules: [{
       test: /\.ts(x?)$/,
@@ -46,7 +36,6 @@ module.exports = {
     port: 8080
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new DefinePlugin({
       'process.env.URL_API': JSON.stringify('https://pokeapi.co/api/v2/pokemon')
     }),
@@ -54,4 +43,4 @@ module.exports = {
       template: './template.dev.html'
     })
   ]
-}
+})
