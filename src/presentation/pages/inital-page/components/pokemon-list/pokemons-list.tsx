@@ -15,7 +15,7 @@ export const PokemonsList: React.FC<Props> = ({ pokemons }: Props) => {
         {pokemons.map((i) => (
           <li key={i.id}>
             <CardPokemon
-              img={i.img.officialArtwork.frontDefault}
+              img={i.images[1]}
               name={i.name}
               type={i.types}
               height={i.height}
