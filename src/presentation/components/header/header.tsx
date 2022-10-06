@@ -8,7 +8,7 @@ import { stateModalSearchState } from './components/atoms/atoms'
 import { useRecoilState } from 'recoil'
 
 export const Header: React.FC = () => {
-  const [stateModalSearch, setStateModalSearch] = useRecoilState(stateModalSearchState)
+  const [{ hidden }, setStateModalSearch] = useRecoilState(stateModalSearchState)
 
   return (
     <div className={Styles.headerContainer}>
@@ -16,14 +16,14 @@ export const Header: React.FC = () => {
         <Logo />
         <div
           onClick={() => {
-            setStateModalSearch(!stateModalSearch)
+            setStateModalSearch((o) => ({ ...o, hidden: !hidden }))
           }}
           className={Styles.lupa}
         >
           <Lupa />
         </div>
       </header>
-      <SearchModal state={stateModalSearch} setState={setStateModalSearch}/>
+      <SearchModal state={hidden} setState={setStateModalSearch}/>
     </div>
   )
 }
