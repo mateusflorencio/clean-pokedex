@@ -1,4 +1,4 @@
-import { map } from '@/data/usecases/remote-list-each-pokemon/helpers'
+import { map } from '@/data/helpers'
 
 const fakeResponsePokemon = {
   abilities: [{

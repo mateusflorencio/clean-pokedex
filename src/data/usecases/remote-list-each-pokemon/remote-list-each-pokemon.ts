@@ -2,7 +2,7 @@
 import { IHttpClient } from '@/data/protocols'
 import { UrlPokemon, Pokemon } from '@/domain/models'
 import { ILoadEachPokemon } from '@/domain/usecases/load-each-pokemon'
-import { map as util } from './helpers'
+import { map as util } from '../../helpers'
 
 export class RemoteListEachPokemon implements ILoadEachPokemon {
   constructor (private readonly httpClient: IHttpClient<Pokemon>) {}

@@ -1,7 +1,7 @@
 import { makeAxiosResponseWithPokemon, makeUrlPokemon } from '@/tests/domain/mocks'
 import { IHttpClient } from '@/data/protocols'
 import { RemoteListEachPokemon } from '@/data/usecases'
-import { map as util } from '@/data/usecases/remote-list-each-pokemon/helpers'
+import { map as util } from '@/data/helpers'
 import { map as axiosHelpers } from '@/infra/http/helpers'
 
 const fakeResponse = axiosHelpers(makeAxiosResponseWithPokemon())

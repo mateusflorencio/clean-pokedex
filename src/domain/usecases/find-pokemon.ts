@@ -1,5 +1,5 @@
 import { Pokemon } from '../models'
 
-export interface FindPokemonByName {
-  findByName: (name: string) => Promise<Pokemon>
+export interface ILoadPokemonByName {
+  loadByName: (name: string) => Promise<Pokemon>
 }
