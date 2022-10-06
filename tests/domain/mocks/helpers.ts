@@ -1,4 +1,3 @@
-import { TNameUrl } from '@/data/models/sub-models/name-url'
 import { faker } from '@faker-js/faker'
 
 export const toDoArrayForLength = <T>(length: number, type: T): T[] => {
@@ -9,7 +8,7 @@ export const toDoArrayForLength = <T>(length: number, type: T): T[] => {
   return arr
 }
 
-export const makeNameAndUrl = (): TNameUrl => ({
+export const makeNameAndUrl = (): any => ({
   name: faker.name.firstName(),
   url: faker.internet.url()
 })

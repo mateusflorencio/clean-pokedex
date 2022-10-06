@@ -1,30 +1,25 @@
-import { TAbility } from '@/data/models/sub-models/abilities'
-import { TForms } from '@/data/models/sub-models/forms'
-import { TMoves } from '@/data/models/sub-models/moves'
-import { TTypes } from '@/data/models/sub-models/type'
 import { HttpStatusCode } from '@/data/protocols'
 import { faker } from '@faker-js/faker'
 import { AxiosResponse } from 'axios'
 import { makeNameAndUrl, toDoArrayForLength } from './helpers'
 
-const makeAbility = (): TAbility => ({
+const makeAbility = (): any => ({
   ability: makeNameAndUrl(),
   is_hidden: faker.helpers.arrayElement([false, true]) ,
   slot: Number(faker.random.numeric(1))
 })
-const makeForms = (): TForms => ({ forms: makeNameAndUrl() })
+const makeForms = (): any => ({ forms: makeNameAndUrl() })
 const makeHeight = (): string => (faker.random.numeric(2))
 const makeId = (): number => (Number(faker.random.numeric(4)))
 const makeName = (): string => (faker.name.firstName())
-const makeMoves = (): TMoves => ({ move: makeNameAndUrl() })
-const makeTypes = (): TTypes => ({ type: makeNameAndUrl() })
+const makeMoves = (): any => ({ move: makeNameAndUrl() })
+const makeTypes = (): any => ({ type: makeNameAndUrl() })
 const makeImg = (): any => ({
   dream_world: {
     front_default: faker.internet.url(),
     front_female: faker.internet.url()
   },
-  // eslint-disable-next-line no-useless-computed-key
-  ['official-artwork']: {
+  'official-artwork': {
     front_default: faker.internet.url()
   },
   home: {

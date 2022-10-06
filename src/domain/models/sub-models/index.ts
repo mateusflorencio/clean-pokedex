@@ -1,6 +1,0 @@
-export * from './abilities'
-export * from './forms'
-export * from './img'
-export * from './moves'
-export * from './name-url'
-export * from './type'

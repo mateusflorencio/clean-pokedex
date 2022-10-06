@@ -1,16 +1,10 @@
-import { TAbility } from './sub-models/abilities'
-import { TForms } from './sub-models/forms'
-import { TMoves } from './sub-models/moves'
-import { TImgs } from './sub-models/img'
-import { TTypes } from './sub-models/type'
-
 export type Pokemon = {
-  abilities: TAbility[]
-  forms: TForms[]
-  height: string
+  abilities: string[]
+  forms: string[]
+  height: number
   id: number
   name: string
-  moves: TMoves[]
-  types: TTypes[]
-  img: TImgs
+  moves: string[]
+  types: string[]
+  images: string[]
 }
