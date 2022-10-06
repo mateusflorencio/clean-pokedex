@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { Header } from '@/presentation/components'
 import Card from './components/image-card/img-card'
-import Buttom from './components/buttom/buttom'
 import Description from './components/description/description'
 import Picture from './components/picture/picture'
 import Styles from './poke-page.scss'
@@ -37,10 +36,6 @@ export const PokePage: React.FC<TProps> = ({ load }: TProps) => {
     <>
     <Header/>
     {pokemon.id && <div className={Styles.pokePageBox}>
-      <div className={Styles.btnBox}>
-        <Buttom bgColor='blue' text='back'/>
-        <Buttom bgColor='green' text='next'/>
-      </div>
 
       <div className={Styles.contentBox}>
         <span className={Styles.outYellow}></span>
