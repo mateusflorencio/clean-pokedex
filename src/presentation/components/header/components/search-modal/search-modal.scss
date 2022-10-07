@@ -40,7 +40,7 @@
     }
 
     .inputBox {
-      display: flex;
+      display: flex !important;
       flex-direction: row;
       border: 1px solid $greyDark;
       @include m.borderRadius(2px);
@@ -49,27 +49,32 @@
       @include m.wh(70%, auto);
       padding-right: 1rem;
 
+      form {
+        width: 100% !important;
+        display: flex;
+        flex-direction: row;
 
-      input[type="text"] {
-        @include m.wh(100%, 5rem);
-        font-size: 1.4rem;
-        padding: 2rem;
-        margin-right: 1rem;
-        z-index: 4;
-        outline: none;
-        border: none;
-
-        &:focus {
+        input[type="text"] {
+          @include m.wh(100%, 5rem);
+          font-size: 1.4rem;
+          padding: 2rem;
+          margin-right: 1rem;
+          z-index: 4;
           outline: none;
+          border: none;
+
+          &:focus {
+            outline: none;
+          }
+
+          &::placeholder {
+            color: $greyDark;
+          }
         }
 
-        &::placeholder {
-          color: $greyDark;
+        button {
+          background: rgba(0, 0, 0, 0);
         }
-      }
-      
-      div{
-        cursor: pointer;
       }
     }
   }

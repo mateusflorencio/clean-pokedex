@@ -43,3 +43,33 @@
     }
   }
 }
+
+@media (max-width: 700px) {
+  .pokePageBox {
+    width: 100%;
+    border: 0;
+
+    .contentBox {
+      flex-direction: column;
+      align-items: center;
+      margin: 2rem;
+
+      .descriptionBox {
+        order: 2;
+        margin-top: 3rem;
+      }
+
+      .pictureBox {
+        flex-wrap: wrap;
+        margin-top: 7rem;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+        li {
+          margin: 2rem;
+        }
+      }
+    }
+  }
+}

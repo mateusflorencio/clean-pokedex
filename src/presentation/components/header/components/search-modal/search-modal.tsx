@@ -19,7 +19,8 @@ export const SearchModal: React.FC<Props> = ({ state, setState }: Props) => {
     setModal((o) => ({ ...o, input: e.target.value }))
   }
 
-  const handleClick = (): void => {
+  const handleClick = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault()
     history(`/pokemon/${input}`)
     setModal(() => ({ hidden: !hidden, input: '' }))
   }
@@ -38,15 +39,17 @@ export const SearchModal: React.FC<Props> = ({ state, setState }: Props) => {
               X
             </div>
             <div className={Styles.inputBox}>
-              <input
+              <form onSubmit={e => handleClick(e)} >
+                <input required
                 value={input}
                 onChange={(e) => handleInput(e)}
                 type="text"
                 placeholder="Busque um pokémon..."
               />
-              <div onClick={handleClick}>
+              <button type="submit">
                 <Lupa />
-              </div>
+              </button>
+              </form>
             </div>
           </div>
         </div>
